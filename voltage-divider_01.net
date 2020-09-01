@@ -1,0 +1,9 @@
+* C:\GitHub\LTspice-simulations\voltage-divider_01.asc
+Vin N001 0 SINE(0 50M 1000)
+R1 N001 Vout 20Meg
+R2 Vout 0 1Meg
+.tran 0 0.005 0 uic
+* Voltage Divider\nTo cut output voltage from HP Function Generator (min. amplitude is 50 mV peak to peak)\nPlan for 100 mV peak to peak input\nGoal is to output 2.5 mV peak to peak
+.options method = gear
+.backanno
+.end
