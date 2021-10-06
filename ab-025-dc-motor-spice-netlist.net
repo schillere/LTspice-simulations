@@ -1,0 +1,34 @@
+* C:\GitHub\LTspice-simulations\ab-025-dc-motor-spice-netlist
+V_drive N001 0 PWL(0MS 0 50MS 0 50.1MS 3 150MS 3 150.1MS 0)
+L_Motor N001 N005 {L_Motor}
+R_Motor N005 N007 {R_motor}
+V_SENSE_1 N011 0 0 Rser=0
+L_inertia N008 N009 {L_inertia_rotor} Rser=0.0 Rpar=0
+R_loss N010 N012 {R_loss}
+V_SENSE_2 N012 0 0 Rser=0
+B_torque N003 0 V=I(V_SENSE_1)*K_t
+Back_emf N007 N011 V=I(V_SENSE_2)*K_emf
+B3 0 N002 I=I(V_SENSE_2)
+C1 N002 0 1 Rser=0 Lser=0 Rpar=0 Cpar=0
+R1 N002 0 1
+B_gravity N004 N006 V= L_inertia_emass*radius * sin( V(n004) ) * 9.81
+V_load_torque N006 N008 0V
+L_inertia1 N009 N010 {L_inertia_emass} Rser=0.0 Rpar=0
+SW1 N004 N003 A 0 turnoff
+D1 N001 A turn_on
+C2 A 0 1
+.model D D
+.lib C:\Program Files\LTC\LTspiceXVII\lib\cmp\standard.dio
+.tran 0 200m 0m 0.001m startup
+.PARAM K_t = 900u
+.PARAM K_emf = 900u
+.PARAM R_motor = 5.5
+.PARAM L_Motor = 50u
+.PARAM R_loss = 300n
+.PARAM L_inertia_rotor = 15n
+.PARAM radius = 0.002m
+.PARAM L_inertia_emass = 15n
+.model turnoff SW(Vt = 1u Ron = 0.000001p)
+.model turn_on D( Vfwd = 0.6 Rrev = 0.0001 Ron = 0.000001)
+.backanno
+.end
