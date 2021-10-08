@@ -1,5 +1,5 @@
-* C:\GitHub\LTspice-simulations\2021-10-06_DC_Vibration_Motor_01.asc
-V_drive 1 0 PWL(0MS 0 50MS 0 50.1MS {drive_voltage} 150MS {drive_voltage} 150.1MS 0)
+* C:\GitHub\LTspice-simulations\2021-10-06_DC_Vibration_Motor_02.asc
+V_drive 1 0 PWL(0MS 0 50MS 0 50.1MS {drive_voltage})
 L_Motor 1 2 {L_motor}
 R_Motor 2 3 {R_motor}
 VSENSE1 4 0 0 Rser=0
