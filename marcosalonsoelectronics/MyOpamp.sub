@@ -1,0 +1,14 @@
+* Operational amplifier
+* Marcos Alonso, Feb. 2021
+
+.subckt MyOpamp 1 2 3
+
+.param pi=3.141592654
+Ri 1 2 {Ri}
+E1 a 0 value={Ao*V(1,2)}
+R1 a b 1
+C1 b 0 {1/( 2*pi*1*(FBW/Ao) )}
+E2 c 0 value={v(b)}
+Ro c 3 {Ro}
+
+.ends MyOpamp
