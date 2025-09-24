@@ -1,0 +1,1 @@
+Student's practice simulations: https://github.com/mick001/Circuits-LTSpice
